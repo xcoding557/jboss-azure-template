@@ -143,13 +143,13 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcbb" pool-name="casax" enabled="true" use-ccm="true">
+                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcbb" pool-name="casax" enabled="false" use-ccm="true">
                     <connection-url>jdbc:postgresql://dbmbanking.postgres.database.azure.com:5432/mbanking-dev-casaxcb</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>Postgres</driver>
                     <security>
-                        <user-name>postgres@dbmbanking</user-name>
-                        <password>anabatic123!@#</password>
+                        <user-name>postgres</user-name>
+                        <password>123456</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>

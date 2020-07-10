@@ -17,7 +17,7 @@ rem #
 rem Uncomment the following line to disable manipulation of JAVA_OPTS (JVM parameters)
 rem set PRESERVE_JAVA_OPTS=true
 rem set "JAVA_HOME=C:\Program Files\Java\jdk1.8.0_181"
-set "JAVA_OPTS=-Xms1G -Xmx4G -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=4G"
+rem set "JAVA_OPTS=-Xms1G -Xmx12G -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=4G"
 if not "x%JAVA_OPTS%" == "x" (
   echo "JAVA_OPTS already set in environment; overriding default settings with values: %JAVA_OPTS%"
   goto JAVA_OPTS_SET
@@ -49,8 +49,9 @@ rem # options that are always passed by run.bat.
 rem #
 
 rem # JVM memory allocation pool parameters - modify as appropriate.
-set "JAVA_OPTS=-Xms1G -Xmx1G -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m"
-set "JAVA_OPTS=-Djboss.as.management.blocking.timeout=600"
+rem set "JAVA_OPTS=-Xms1G -Xmx12G -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=4G"
+set "JAVA_OPTS=-Xms1G -Xmx12G -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true"
+set "JAVA_OPTS=-Djboss.as.management.blocking.timeout=900"
 rem # Prefer IPv4
 set "JAVA_OPTS=%JAVA_OPTS% -Djava.net.preferIPv4Stack=true"
 
