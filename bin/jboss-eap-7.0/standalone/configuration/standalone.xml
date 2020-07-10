@@ -143,49 +143,7 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasource/omnichannel-react" pool-name="omnichannel-react" enabled="true" use-ccm="true" statistics-enabled="true">
-                    <connection-url>jdbc:postgresql://10.50.51.23:5432/omnichannel-react-merchant</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>Postgres</driver>
-                    <security>
-                        <user-name>postgres</user-name>
-                        <password>123456</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <background-validation>true</background-validation>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcb" pool-name="casaxcb-backup" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://10.50.51.23:5432/casaxcb_iki</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>Postgres</driver>
-                    <security>
-                        <user-name>postgres</user-name>
-                        <password>123456</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <background-validation>true</background-validation>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcbb" pool-name="casa-t" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://dbmbanking.postgres.database.azure.com:5432/mbanking-dev-casaxcb</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>Postgres</driver>
-                    <security>
-                        <user-name>postgres@dbmbanking</user-name>
-                        <password>anabatic123!@#</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <background-validation>true</background-validation>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
-                    </validation>
-                </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasource/casaxz" pool-name="casa-azure" enabled="true" use-ccm="true">
+                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcbb" pool-name="casax" enabled="true" use-ccm="true">
                     <connection-url>jdbc:postgresql://dbmbanking.postgres.database.azure.com:5432/mbanking-dev-casaxcb</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>Postgres</driver>
