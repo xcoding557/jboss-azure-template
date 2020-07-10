@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="threat_report" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="234"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="DATE_FROM" class="java.lang.String"/>
+	<parameter name="CHANNEL" class="java.lang.String"/>
+	<parameter name="DATE_TO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	CASE WHEN channel = 'MOB' THEN 'MOB'
+	     WHEN channel = 'PORT' THEN 'IB'
+	     WHEN channel = 'ATM' THEN 'ATM'
+	     WHEN channel = 'AGENT' THEN 'AGT'
+	     WHEN channel = 'TELLER' THEN 'TELL'
+	END CHANNEL ,
+	SUM (CASE WHEN threat_type = 0 THEN 1 ELSE 0 END) FAILED_LOGIN,
+	SUM (CASE WHEN threat_type = 1 THEN 1 ELSE 0 END) PASSWORD_UNMATCH,
+	SUM (CASE WHEN threat_type = 2 THEN 1 ELSE 0 END) OTP_NOT_MATCH,
+	SUM (CASE WHEN threat_type = 3 THEN 1 ELSE 0 END) FORGOT_PASSWORD,
+	SUM (CASE WHEN threat_type = 4 THEN 1 ELSE 0 END) PIN_NOT_MATCH,
+	SUM (CASE WHEN threat_type = 5 THEN 1 ELSE 0 END) FD01,
+	SUM (CASE WHEN threat_type = 6 THEN 1 ELSE 0 END) FD02,
+	SUM (CASE WHEN threat_type = 7 THEN 1 ELSE 0 END) FD03,
+	SUM (CASE WHEN threat_type = 8 THEN 1 ELSE 0 END) FD04,
+    date_trunc('day', created_time) DATE
+FROM log_threat
+WHERE created_time BETWEEN CAST($P{DATE_FROM} as DATE) AND CAST($P{DATE_TO} as DATE) + interval '1 day' - interval '1 second' AND
+	(
+		(1 = CASE WHEN $P{CHANNEL} = 'ALL' THEN 1 END )
+		OR
+		(channel = $P{CHANNEL})
+	)
+GROUP BY channel, date_trunc('day', created_time)
+ORDER BY date_trunc('day', created_time)]]>
+	</queryString>
+	<field name="CHANNEL" class="java.lang.String"/>
+	<field name="FAILED_LOGIN" class="java.lang.Integer"/>
+	<field name="PASSWORD_UNMATCH" class="java.lang.Integer"/>
+	<field name="OTP_NOT_MATCH" class="java.lang.Integer"/>
+	<field name="FORGOT_PASSWORD" class="java.lang.Integer"/>
+	<field name="PIN_NOT_MATCH" class="java.lang.Integer"/>
+	<field name="FD01" class="java.lang.Integer"/>
+	<field name="FD02" class="java.lang.Integer"/>
+	<field name="FD03" class="java.lang.Integer"/>
+	<field name="FD04" class="java.lang.Integer"/>
+	<field name="DATE" class="java.sql.Timestamp"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="40">
+			<staticText>
+				<reportElement x="1" y="14" width="695" height="20"/>
+				<textElement textAlignment="Center" lineSpacing="Single"/>
+				<text><![CDATA[THREAT REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="45">
+			<staticText>
+				<reportElement x="1" y="0" width="95" height="20"/>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[Channel :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="20" width="95" height="20"/>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[Date Range :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="20" width="60" height="20">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DATE_FROM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="0" width="120" height="20"/>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CHANNEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="156" y="20" width="60" height="20">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="20" width="60" height="20">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DATE_TO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40">
+			<staticText>
+				<reportElement x="1" y="6" width="95" height="34"/>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Channel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fail Login]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Unmatch Password]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Unmatch PIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Unmatch OTP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Forget Password]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FD01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FD02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="576" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FD03]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="636" y="6" width="60" height="34">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FD04]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<staticText>
+				<reportElement x="96" y="0" width="60" height="21">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="3" bottomPadding="5">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CHANNEL}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="156" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FAILED_LOGIN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="216" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PASSWORD_UNMATCH}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="276" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PIN_NOT_MATCH}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="336" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{OTP_NOT_MATCH}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="396" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FORGOT_PASSWORD}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="456" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FD01}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="516" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FD02}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="576" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FD03}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="636" y="0" width="60" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FD04}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="yyyy/MM/dd">
+				<reportElement stretchType="RelativeToBandHeight" x="1" y="0" width="95" height="21"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{DATE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54"/>
+	</pageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

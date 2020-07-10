@@ -5,7 +5,7 @@ rem -------------------------------------------------------------------------
 rem
 rem A simple utility for adding new users to the properties file used
 rem for domain management authentication out of the box.
-
+set "JAVA_HOME=C:\Program Files\Java\jdk1.8.0_91"
 rem $Id$
 
 @if not "%ECHO%" == ""  echo %ECHO%

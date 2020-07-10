@@ -1,0 +1,80 @@
+[2018-12-03 11:33:29.225]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/capital/get-all at 2018-12-03 11:33:29.021) 
+
+(finished at 2018-12-03 11:33:29.222) Total Time : 00:00.201 
+{"responseCode":"1000","responseMessage":"Process successful.","errorDetails":null,"response":[{"createdTime":"2018-02-27 11:28:47.388","createdBy":"admin","updatedTime":"2018-03-16 07:25:50.917","updatedBy":"admin","authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":33317,"agentCapitalCode":"COMSUK","agentCapitalName":"Komunitas Sukma","description":null,"agentCapitalDetails":null,"leaderMonitor":"AMOUNT","memberMonitor":"AMOUNT"},{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":36673,"agentCapitalCode":"COO123","agentCapitalName":"Test capital","description":"Test","agentCapitalDetails":null,"leaderMonitor":"NOVIEW","memberMonitor":"NOVIEW"}]}
+[2018-12-03 13:41:18.941]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:41:18.858) 
+{"id":36671}
+(finished at 2018-12-03 13:41:18.939) Total Time : 00:00.081 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 13:41:24.176]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:41:24.069) 
+{"id":36671}
+(finished at 2018-12-03 13:41:24.175) Total Time : 00:00.106 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 13:41:35.112]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:41:34.996) 
+{"id":36411}
+(finished at 2018-12-03 13:41:35.107) Total Time : 00:00.111 
+{"responseCode":"1000","responseMessage":"Process successful.","errorDetails":null,"response":{"createdTime":"2018-04-20 15:10:11.048","createdBy":"admin","updatedTime":"2018-04-20 15:10:11.048","updatedBy":"admin","authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":36411,"agentCapital":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":33317,"agentCapitalCode":"COMSUK","agentCapitalName":"Komunitas Sukma","description":null,"agentCapitalDetails":null,"leaderMonitor":"AMOUNT","memberMonitor":"AMOUNT"},"agent":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":36410,"name":"AGENT SATU","description":null,"commissionAccount":"001360000000057","transactionAccount":"001360000000057","agentTransactions":[],"accountIdentifier":null,"accountType":null,"commissionGroup":null,"latitude":null,"longitude":null,"branchId":"B0001","reserved1":null,"reserved2":null,"reserved3":null,"reserved4":null,"reserved5":null,"reserved6":null,"reserved7":null,"reserved8":null,"reserved9":null,"reserved10":null,"reserved11":null,"reserved12":null,"reserved13":null,"reserved14":null,"reserved15":null,"reserved16":null,"reserved17":null,"reserved18":null,"reserved19":null,"reserved20":null,"minCashCapital":0.00,"maxCashCapital":0.00,"minDepositCapital":0.00,"currentCashCapital":0.00},"communityStatus":"MEMBER","agentCapitalId":null,"agentId":null}}
+[2018-12-03 13:49:18.177]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:49:18.106) 
+{"id":36411}
+(finished at 2018-12-03 13:49:18.173) Total Time : 00:00.067 
+{"responseCode":"1000","responseMessage":"Process successful.","errorDetails":null,"response":{"createdTime":"2018-04-20 15:10:11.048","createdBy":"admin","updatedTime":"2018-04-20 15:10:11.048","updatedBy":"admin","authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":36411,"agentCapital":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":33317,"agentCapitalCode":"COMSUK","agentCapitalName":"Komunitas Sukma","description":null,"agentCapitalDetails":null,"leaderMonitor":"AMOUNT","memberMonitor":"AMOUNT"},"agent":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":36410,"name":"AGENT SATU","description":null,"commissionAccount":"001360000000057","transactionAccount":"001360000000057","agentTransactions":[],"accountIdentifier":null,"accountType":null,"commissionGroup":null,"latitude":null,"longitude":null,"branchId":"B0001","reserved1":null,"reserved2":null,"reserved3":null,"reserved4":null,"reserved5":null,"reserved6":null,"reserved7":null,"reserved8":null,"reserved9":null,"reserved10":null,"reserved11":null,"reserved12":null,"reserved13":null,"reserved14":null,"reserved15":null,"reserved16":null,"reserved17":null,"reserved18":null,"reserved19":null,"reserved20":null,"minCashCapital":0.00,"maxCashCapital":0.00,"minDepositCapital":0.00,"currentCashCapital":0.00},"communityStatus":"MEMBER","agentCapitalId":null,"agentId":null}}
+[2018-12-03 13:49:33.991]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:49:33.953) 
+{"id":1212}
+(finished at 2018-12-03 13:49:33.991) Total Time : 00:00.038 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 13:49:34.125]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:49:34.090) 
+{"id":1212}
+(finished at 2018-12-03 13:49:34.125) Total Time : 00:00.035 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 13:55:05.050]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 13:55:05.048) 
+{}
+(finished at 2018-12-03 13:55:05.049) Total Time : 00:00.001 
+{"responseCode":"1003","responseMessage":"Missing mandatory field.","errorDetails":{"id":"ID must not be empty"},"response":null}
+[2018-12-03 14:02:11.967]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/agent/community/member/get at 2018-12-03 14:02:11.965) 
+{}
+(finished at 2018-12-03 14:02:11.966) Total Time : 00:00.001 
+{"responseCode":"1003","responseMessage":"Missing mandatory field.","errorDetails":{"id":"ID must not be empty"},"response":null}
+[2018-12-03 16:21:30.993]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:21:30.806) 
+{"cif":null,"accountNumber":"001360000000057"}
+(finished at 2018-12-03 16:21:30.985) Total Time : 00:00.179 
+{"responseCode":"1000","responseMessage":"Process successful.","errorDetails":null,"response":[{"createdTime":"2018-04-20 13:39:22.381","createdBy":"admin","updatedTime":"2018-04-20 16:50:35.742","updatedBy":"admin","authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":36462,"account":null,"transactionCode":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"statusActive":false,"id":1057,"transactionCode":"1057","channel":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"statusActive":false,"id":643,"channelCode":"MOB","channelName":"Pocketbank Mobile Application","description":"Pocketbank Mobile Application"},"description":"Transfer antar rekening","allowLimitCheck":false,"allowAnonymous":false,"requireUserAuthorization":false,"requireAuthorizationCode":false,"eventType":"FINANCIAL","broadcastEvent":null},"fee":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":554,"feeCode":"FEE1","feeName":"Fee Name Test 1","currency":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":"IDR","code":"360","name":"Indonesian Rupiah","precision":19,"scale":0},"typeFlag":"FIXED","amount":1000000.00,"percentage":0.00,"maximumAmount":1000000.00,"minimumAmount":0.00,"maximumThreshold":0.00,"minimumThreshold":0.00,"coa":null,"description":null,"feeStatus":null},"limitConfiguration":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":1709,"code":"AGCOUT","name":"Agent Cash Out Limitation","description":"Agent Cash Out Limitation","currency":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":"IDR","code":"360","name":"Indonesian Rupiah","precision":19,"scale":0},"dailyDebitCount":5,"weeklyDebitCount":12,"monthlyDebitCount":48,"dailyCreditCount":5,"weeklyCreditCount":12,"monthlyCreditCount":48,"yearlyDebitCount":100,"yearlyCreditCount":100,"dailyDebitAmount":999999999.00,"weeklyDebitAmount":999999999.00,"monthlyDebitAmount":999999999.00,"dailyCreditAmount":999999999.00,"weeklyCreditAmount":999999999.00,"monthlyCreditAmount":999999999.00,"yearlyDebitAmount":999999999.00,"yearlyCreditAmount":999999999.00,"minimumBalance":10000000.00,"maximumBalance":10000000.00,"maximumSingleDebit":9999999999999.00,"minimumSingleDebit":10000.00,"maximumSingleCredit":9999999999999.00,"minimumSingleCredit":10000.00},"commissionPercentage":0.00,"limitPercentage":0.00}]}
+[2018-12-03 16:21:38.682]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:21:38.674) 
+{"cif":null,"accountNumber":"001360000000001"}
+(finished at 2018-12-03 16:21:38.681) Total Time : 00:00.007 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 16:21:44.784]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:21:44.779) 
+{"cif":null,"accountNumber":"001360000000056"}
+(finished at 2018-12-03 16:21:44.783) Total Time : 00:00.004 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 16:21:48.793]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:21:48.660) 
+{"cif":null,"accountNumber":"001360000000057"}
+(finished at 2018-12-03 16:21:48.788) Total Time : 00:00.128 
+{"responseCode":"1000","responseMessage":"Process successful.","errorDetails":null,"response":[{"createdTime":"2018-04-20 13:39:22.381","createdBy":"admin","updatedTime":"2018-04-20 16:50:35.742","updatedBy":"admin","authoriser":null,"authorizeTime":null,"status":"LIVE","version":null,"id":36462,"account":null,"transactionCode":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"statusActive":false,"id":1057,"transactionCode":"1057","channel":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"statusActive":false,"id":643,"channelCode":"MOB","channelName":"Pocketbank Mobile Application","description":"Pocketbank Mobile Application"},"description":"Transfer antar rekening","allowLimitCheck":false,"allowAnonymous":false,"requireUserAuthorization":false,"requireAuthorizationCode":false,"eventType":"FINANCIAL","broadcastEvent":null},"fee":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":554,"feeCode":"FEE1","feeName":"Fee Name Test 1","currency":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":"IDR","code":"360","name":"Indonesian Rupiah","precision":19,"scale":0},"typeFlag":"FIXED","amount":1000000.00,"percentage":0.00,"maximumAmount":1000000.00,"minimumAmount":0.00,"maximumThreshold":0.00,"minimumThreshold":0.00,"coa":null,"description":null,"feeStatus":null},"limitConfiguration":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":1709,"code":"AGCOUT","name":"Agent Cash Out Limitation","description":"Agent Cash Out Limitation","currency":{"createdTime":null,"createdBy":null,"updatedTime":null,"updatedBy":null,"authoriser":null,"authorizeTime":null,"status":null,"version":null,"id":"IDR","code":"360","name":"Indonesian Rupiah","precision":19,"scale":0},"dailyDebitCount":5,"weeklyDebitCount":12,"monthlyDebitCount":48,"dailyCreditCount":5,"weeklyCreditCount":12,"monthlyCreditCount":48,"yearlyDebitCount":100,"yearlyCreditCount":100,"dailyDebitAmount":999999999.00,"weeklyDebitAmount":999999999.00,"monthlyDebitAmount":999999999.00,"dailyCreditAmount":999999999.00,"weeklyCreditAmount":999999999.00,"monthlyCreditAmount":999999999.00,"yearlyDebitAmount":999999999.00,"yearlyCreditAmount":999999999.00,"minimumBalance":10000000.00,"maximumBalance":10000000.00,"maximumSingleDebit":9999999999999.00,"minimumSingleDebit":10000.00,"maximumSingleCredit":9999999999999.00,"minimumSingleCredit":10000.00},"commissionPercentage":0.00,"limitPercentage":0.00}]}
+[2018-12-03 16:23:48.236]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:23:48.231) 
+{"cif":null,"accountNumber":"xxx"}
+(finished at 2018-12-03 16:23:48.235) Total Time : 00:00.004 
+{"responseCode":"6000","responseMessage":"Data not found.","errorDetails":null,"response":null}
+[2018-12-03 16:27:33.398]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:27:33.396) 
+{"cif":null,"accountNumber":null}
+(finished at 2018-12-03 16:27:33.397) Total Time : 00:00.001 
+{"responseCode":"1003","responseMessage":"Missing mandatory field.","errorDetails":{"accountNumber":"Account Number must not be empty"},"response":null}
+[2018-12-03 16:30:49.468]: INFO - BaseController.loggingRequestResponse(29) | 
+(processing request /omnichannel-rest/api/customer/transaction/get-by-account-number at 2018-12-03 16:30:49.466) 
+{"cif":null,"accountNumber":""}
+(finished at 2018-12-03 16:30:49.467) Total Time : 00:00.001 
+{"responseCode":"1003","responseMessage":"Missing mandatory field.","errorDetails":{"accountNumber":"Account Number must not be empty"},"response":null}

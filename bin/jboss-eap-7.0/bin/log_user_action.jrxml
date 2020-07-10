@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="commision_report" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" >
+	<property name="ireport.zoom" value="1.1000000000000045"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1" />
+	<parameter name="FROM" class="java.lang.String"/>
+	<parameter name="UNTIL" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	COALESCE(device_id,'') as device_id,
+	COALESCE(device_platform,'') as device_platform,
+	COALESCE(device_os_version,'') as device_os_version,
+	COALESCE(device_type,'') as device_type,
+	COALESCE(log_menu,'') as log_menu,
+	recorded_date
+FROM log_application WHERE log_menu is NOT NULL
+AND recorded_date BETWEEN CAST($P{FROM} as DATE) AND CAST($P{UNTIL} as DATE) + interval '1 day' - interval '1 second'
+ORDER BY recorded_date DESC, device_id ASC, log_menu ASC]]>
+	</queryString>
+	<field name="device_id" class="java.lang.String"/>
+	<field name="device_platform" class="java.lang.String"/>
+	<field name="device_os_version" class="java.lang.String"/>
+	<field name="device_type" class="java.lang.String"/>
+	<field name="log_menu" class="java.lang.String"/>
+	<field name="recorded_date" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="532" height="20" />
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[LOG USER ACTION REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="36" height="20" />
+				<text><![CDATA[From :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="35" height="20" />
+				<text><![CDATA[Until]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="36" y="0" width="74" height="20" />
+				<textFieldExpression><![CDATA[$P{FROM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="75" height="20" />
+				<textFieldExpression><![CDATA[$P{UNTIL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="5" width="110" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Device Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="5" width="80" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Device Platform]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="5" width="80" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Device Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="5" width="80" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Device OS Version]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="110" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Recroded Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="5" width="90" height="34" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Menu Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="110" y="0" width="110" height="20" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{device_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="470" y="0" width="80" height="20" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{device_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="310" y="0" width="80" height="20" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{device_platform}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="390" y="0" width="80" height="20" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{device_os_version}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd hh:mm">
+				<reportElement positionType="Float" x="0" y="0" width="110" height="20" />
+				<box leftPadding="3" bottomPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{recorded_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="220" y="0" width="90" height="20" />
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{log_menu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

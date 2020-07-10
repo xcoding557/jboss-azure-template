@@ -1,0 +1,57 @@
+2019-09-13 10:09:58,887 ERROR [io.undertow.request] (management task-8) UT005071: Undertow request failed HttpServerExchange{ GET /console/images request {Connection=[Keep-Alive], Accept=[image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*], Accept-Language=[en], Accept-Encoding=[gzip], Accept-Charset=[iso-8859-1,utf-8;q=0.9,*;q=0.1], Pragma=[no-cache], User-Agent=[Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)], Host=[10.50.51.60:9990]} response {Expires=[Mon, 14 Oct 2019 03:09:58 GMT], Cache-Control=[public, max-age=2678400], Last-Modified=[Mon, 18 Apr 2016 09:54:20 GMT], X-Frame-Options=[SAMEORIGIN], Content-Length=[0], Content-Type=[application/octet-stream], Accept-Ranges=[bytes]}}: java.lang.NullPointerException
+	at java.io.FilterInputStream.read(FilterInputStream.java:133)
+	at java.io.FilterInputStream.read(FilterInputStream.java:107)
+	at io.undertow.server.handlers.resource.URLResource$1ServerTask.run(URLResource.java:166)
+	at io.undertow.server.handlers.resource.URLResource.serveImpl(URLResource.java:226)
+	at io.undertow.server.handlers.resource.URLResource.serve(URLResource.java:135)
+	at io.undertow.server.handlers.resource.ResourceHandler$1.handleRequest(ResourceHandler.java:299)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:202)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:792)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+2019-09-13 10:09:58,894 ERROR [io.undertow.request] (management task-9) UT005071: Undertow request failed HttpServerExchange{ GET /console/images request {Accept=[image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*], Accept-Language=[en], Accept-Encoding=[gzip], Pragma=[no-cache], User-Agent=[Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)], Connection=[Keep-Alive], Accept-Charset=[iso-8859-1,utf-8;q=0.9,*;q=0.1], Referer=[http://10.50.51.60:9990/], Host=[10.50.51.60:9990]} response {Expires=[Mon, 14 Oct 2019 03:09:58 GMT], Cache-Control=[public, max-age=2678400], Last-Modified=[Mon, 18 Apr 2016 09:54:20 GMT], X-Frame-Options=[SAMEORIGIN], Content-Length=[0], Content-Type=[application/octet-stream], Accept-Ranges=[bytes]}}: java.lang.NullPointerException
+	at java.io.FilterInputStream.read(FilterInputStream.java:133)
+	at java.io.FilterInputStream.read(FilterInputStream.java:107)
+	at io.undertow.server.handlers.resource.URLResource$1ServerTask.run(URLResource.java:166)
+	at io.undertow.server.handlers.resource.URLResource.serveImpl(URLResource.java:226)
+	at io.undertow.server.handlers.resource.URLResource.serve(URLResource.java:135)
+	at io.undertow.server.handlers.resource.ResourceHandler$1.handleRequest(ResourceHandler.java:299)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:202)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:792)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+2019-09-13 16:21:13,148 INFO  [org.jboss.as.server] (Thread-2) WFLYSRV0220: Server shutdown has been requested.
+2019-09-13 16:21:13,322 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 278) WFLYUT0022: Unregistered web context: /casaxcb-rest
+2019-09-13 16:21:13,322 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 279) WFLYUT0022: Unregistered web context: /casaxcb-web
+2019-09-13 16:21:13,323 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 277) WFLYUT0022: Unregistered web context: /casacb-rest
+2019-09-13 16:21:13,323 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 280) WFLYUT0022: Unregistered web context: /casacb-web
+2019-09-13 16:21:13,351 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = casaxcb-web.war_org.postgresql.Driver_9_1
+2019-09-13 16:21:13,351 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = casaxcb-web.war_oracle.jdbc.OracleDriver_12_1
+2019-09-13 16:21:13,354 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0010: Unbound data source [java:jboss/datasource/casaxcb]
+2019-09-13 16:21:13,397 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) WFLYJCA0010: Unbound data source [java:jboss/datasource/omnichannel-react]
+2019-09-13 16:21:13,416 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasource/casacb]
+2019-09-13 16:21:13,416 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0010: Unbound data source [java:jboss/datasource/pocket]
+2019-09-13 16:21:13,444 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasource/omnichannel]
+2019-09-13 16:21:13,451 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = casaxcb-rest.war_oracle.jdbc.OracleDriver_12_1
+2019-09-13 16:21:13,518 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = casaxcb-rest.war_org.postgresql.Driver_9_1
+2019-09-13 16:21:13,565 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = casacb-rest.war_org.postgresql.Driver_9_1
+2019-09-13 16:21:13,650 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = casacb-rest.war_oracle.jdbc.OracleDriver_12_1
+2019-09-13 16:21:13,671 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = casacb-web.war_oracle.jdbc.OracleDriver_12_1
+2019-09-13 16:21:13,704 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = casacb-web.war_org.postgresql.Driver_9_1
+2019-09-13 16:21:13,795 WARN  [org.jboss.jca.core.connectionmanager.pool.strategy.OnePool] (ServerService Thread Pool -- 282) IJ000615: Destroying active connection in pool: casaxcb-backup (org.jboss.jca.adapters.jdbc.local.LocalManagedConnection@1f4234d9)
+2019-09-13 16:21:13,814 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0019: Stopped Driver service with driver-name = Postgres
+2019-09-13 16:21:14,985 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0019: Host default-host stopping
+2019-09-13 16:21:14,991 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2019-09-13 16:21:15,158 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2019-09-13 16:21:15,894 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment casacb-rest.war (runtime-name: casacb-rest.war) in 2572ms
+2019-09-13 16:21:15,898 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0008: Undertow HTTP listener default suspending
+2019-09-13 16:21:15,908 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0007: Undertow HTTP listener default stopped, was bound to [0:0:0:0:0:0:0:0]:8085
+2019-09-13 16:21:15,963 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0004: Undertow 1.3.21.Final-redhat-1 stopping
+2019-09-13 16:21:16,154 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0028: Stopped deployment casaxcb-rest.war (runtime-name: casaxcb-rest.war) in 2848ms
+2019-09-13 16:21:16,770 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0028: Stopped deployment casaxcb-web.war (runtime-name: casaxcb-web.war) in 3460ms
+2019-09-13 16:21:16,905 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment casacb-web.war (runtime-name: casacb-web.war) in 3557ms
+2019-09-13 16:21:16,917 INFO  [org.jboss.as] (MSC service thread 1-4) WFLYSRV0050: JBoss EAP 7.0.0.GA (WildFly Core 2.1.2.Final-redhat-1) stopped in 3466ms

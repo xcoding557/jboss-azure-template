@@ -1,6 +1,7 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <server xmlns="urn:jboss:domain:4.1">
+
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.connector"/>
@@ -29,6 +30,8 @@
         <extension module="org.wildfly.extension.security.manager"/>
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
+
+
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
@@ -78,6 +81,7 @@
             </role-mapping>
         </access-control>
     </management>
+
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:3.0">
             <console-handler name="CONSOLE">
@@ -139,12 +143,67 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasource/omnichannel-react" pool-name="omnichannel-react" enabled="true" use-ccm="true" statistics-enabled="true">
+                    <connection-url>jdbc:postgresql://10.50.51.23:5432/omnichannel-react-merchant</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>Postgres</driver>
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcb" pool-name="casaxcb-backup" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://10.50.51.23:5432/casaxcb_iki</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>Postgres</driver>
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasource/casaxcbb" pool-name="casa-t" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://10.50.51.23:5432/mbanking-dev-casaxcb</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>Postgres</driver>
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasource/casaxz" pool-name="casa-azure" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://dbmbanking.postgres.database.azure.com:5432/mbanking-dev-casaxcb</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>Postgres</driver>
+                    <security>
+                        <user-name>postgres@dbmbanking</user-name>
+                        <password>anabatic123!@#</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-					<driver name="Oracle12c" module="com.oracle.odbc7"/>
-					<driver name="Postgres" module="org.postgresql"/>
+                    <driver name="Postgres" module="org.postgresql"/>
                 </drivers>
             </datasources>
         </subsystem>
@@ -179,7 +238,6 @@
             </session-bean>
             <pools>
                 <bean-instance-pools>
-                    <!-- Automatically configure pools. Alternatively, max-pool-size can be set to a specific value -->
                     <strict-max-pool name="slsb-strict-max-pool" derive-size="from-worker-pools" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
                     <strict-max-pool name="mdb-strict-max-pool" derive-size="from-cpu-count" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
                 </bean-instance-pools>
@@ -371,7 +429,7 @@
             </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:2.0">
-            <wsdl-host>${jboss.bind.address:127.0.0.1}</wsdl-host>
+            <wsdl-host>${jboss.bind.address:0.0.0.0}</wsdl-host>
             <endpoint-config name="Standard-Endpoint-Config"/>
             <endpoint-config name="Recording-Endpoint-Config">
                 <pre-handler-chain name="recording-handlers" protocol-bindings="##SOAP11_HTTP ##SOAP11_HTTP_MTOM ##SOAP12_HTTP ##SOAP12_HTTP_MTOM">
@@ -382,14 +440,16 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
     </profile>
+
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+            <inet-address value="${jboss.bind.address.management:0.0.0.0}"/>
         </interface>
         <interface name="public">
-            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+            <inet-address value="${jboss.bind.address:0.0.0.0}"/>
         </interface>
     </interfaces>
+
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
@@ -402,4 +462,10 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
+
+    <deployments>
+        <deployment name="casa-web.war" runtime-name="casa-web.war">
+            <content sha1="c321a51e5065cfa0b7676a3795da6fd120e8e354"/>
+        </deployment>
+    </deployments>
 </server>
