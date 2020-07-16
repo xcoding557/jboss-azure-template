@@ -1,0 +1,1 @@
+[2020-07-16 13:27:36.156]: ERROR - CoreUserDaoImpl.loadUserByUsername(91) | javax.persistence.NoResultException: No entity found for query

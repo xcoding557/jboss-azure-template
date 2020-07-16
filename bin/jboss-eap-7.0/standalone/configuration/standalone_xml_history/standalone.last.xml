@@ -422,6 +422,8 @@
     </socket-binding-group>
 
     <deployments>
-
+        <deployment name="casa-web.war" runtime-name="casa-web.war">
+            <content sha1="87b540e19eae52bf75932a6447c2e83a0dc9fb95"/>
+        </deployment>
     </deployments>
 </server>
